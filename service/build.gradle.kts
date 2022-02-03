@@ -25,7 +25,6 @@ dependencies {
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
 
     // Logging
-
     val logbackVersion = "1.2.10"
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
