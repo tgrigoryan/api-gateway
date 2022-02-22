@@ -201,6 +201,7 @@ style:
   MandatoryBracesLoops:
     active: true
   MaxLineLength:
+    maxLineLength: 150
     active: true
     excludes: ['**/test/**', '**/*Test.kt', '**/*Spec.kt']
     excludeCommentStatements: true

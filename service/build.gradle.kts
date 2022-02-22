@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.js.backend.ast.JsEmpty.setSource
+
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id("org.jetbrains.kotlin.jvm")      version "1.5.31"
@@ -34,6 +36,9 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
     testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
+
+    // Detekt
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
@@ -43,6 +48,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
     }
 }
 detekt {
+    setSource(files(projectDir))
+    autoCorrect             = true
+    parallel                = true
+    disableDefaultRuleSets  = true
     buildUponDefaultConfig  = true
     allRules                = false
     config                  = files("$projectDir/config/detekt.yml")
