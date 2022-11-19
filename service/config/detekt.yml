@@ -35,7 +35,7 @@ complexity:
     threshold: 10
     includeStaticDeclarations: false
     includePrivateDeclarations: false
-  ComplexMethod:
+  CyclomaticComplexMethod:
     active: true
     ignoreSingleWhenExpression: true
   LargeClass:
@@ -145,7 +145,6 @@ potential-bugs:
     excludes: ['**/test/**', '**/*.Test.kt', '**/*.Spec.kt']
   UselessPostfixExpression:
     active: true
-
 style:
   ClassOrdering:
     active: true
@@ -182,10 +181,6 @@ style:
       - 'java.lang.ClassLoader.getResourceAsStream'
   ForbiddenVoid:
     active: true
-  LibraryCodeMustSpecifyReturnType:
-    active: true
-    excludes: ['**/*.kt']
-    includes: ['**/detekt-api/src/main/**/api/*.kt']
   MagicNumber:
     excludes: ['**/test/**', '**/*Test.kt', '**/*Spec.kt']
     ignorePropertyDeclaration: true

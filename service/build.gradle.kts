@@ -2,8 +2,8 @@ import org.jetbrains.kotlin.js.backend.ast.JsEmpty.setSource
 
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm")      version "1.5.31"
-    id("io.gitlab.arturbosch.detekt")   version "1.19.0"
+    id("org.jetbrains.kotlin.jvm")      version "1.6.21"
+    id("io.gitlab.arturbosch.detekt")   version "1.22.0-RC3"
     application
 }
 
@@ -17,34 +17,35 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
     // Arrow
-    val arrowVersion = "1.0.1"
+    val arrowVersion = "1.1.3"
     implementation(platform("io.arrow-kt:arrow-stack:$arrowVersion"))
     implementation("io.arrow-kt:arrow-core")
 
     // Ktor
-    val ktorVersion = "1.6.7"
+    val ktorVersion = "1.6.8"
     implementation("io.ktor:ktor-server-core:$ktorVersion")
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
 
     // Logging
-    val logbackVersion = "1.2.10"
+    val logbackVersion = "1.3.4"
     implementation("ch.qos.logback:logback-classic:$logbackVersion")
 
     // Testing
-    val kotestVersion = "5.1.0"
+    val kotestVersion = "5.5.4"
     testImplementation("io.kotest:kotest-runner-junit5:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core:$kotestVersion")
     testImplementation("io.kotest:kotest-property:$kotestVersion")
     testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
 
     // Detekt
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.19.0")
+    val detektFormattingVersion = "1.22.0-RC3"
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:$detektFormattingVersion")
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     kotlinOptions {
         jvmTarget           = "11"
-        freeCompilerArgs    = freeCompilerArgs + "-Xopt-in=kotlin.RequiresOptIn"
+        freeCompilerArgs    = freeCompilerArgs + "-opt-in=kotlin.RequiresOptIn"
     }
 }
 detekt {
