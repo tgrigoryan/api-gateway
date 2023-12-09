@@ -2,9 +2,9 @@ package tg.agw
 
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.matchers.shouldBe
-import io.ktor.application.Application
 import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.Application
 import io.ktor.server.testing.handleRequest
 import io.ktor.server.testing.withTestApplication
 
